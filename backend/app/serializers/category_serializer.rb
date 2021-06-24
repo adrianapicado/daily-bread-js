@@ -1,5 +1,5 @@
 class CategorySerializer < ActiveModel::Serializer
-  attributes :id, :name, :ingredients, :calories
-  belongs_to :category
+ attributes :id, :name
+  has_many :meals
 
 end

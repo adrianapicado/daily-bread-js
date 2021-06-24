@@ -16,7 +16,7 @@ class Category {
     renderCategory() {
         return `
             <h3>${this.name}</h3>
-            <button id="add-song" data-id="${this.id}">Add Meal</button>
+            <button id="add-meal" data-id="${this.id}">Add Meal</button>
             <hr>
             
             <div id="add-meal-div">

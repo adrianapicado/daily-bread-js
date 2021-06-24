@@ -22,12 +22,13 @@ class Meal {
         return `
         <h3>${this.name}</h3>
         <hr>
+        <h3>Ingredients:</h3>
         <br>
-        <h4>Ingredients:</h4>
-        <h4>${this.ingredients}</h4>
+        <h3>${this.ingredients}</h3>
         <br>
         <h4>Calories:</h4>
-        <h4>${this.calories}</h4>
+        <br>
+        <h3>${this.calories}</h3>
         <br> 
         <button id="delete-meal" data-id="${this.id}" data-category-id="${this.category_id}">Delete</button>
 
