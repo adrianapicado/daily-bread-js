@@ -15,5 +15,19 @@ class ApiService {
         return data
     }
 
+    async fetchCreateCategory(categoryData) {
+        let configObj = {
+            method: 'POST',
+            body: JSON.stringify(categoryData),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        let res = await fetch(this.base_url + `/categories`, configObj)
+        let data = await res.json()
+        return data
+    }
+
 
 }
