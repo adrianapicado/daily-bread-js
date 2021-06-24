@@ -49,3 +49,22 @@ async function createCategory(e) {
     clearForm()
 }
 
+async function displayCategory(id){
+    const data = await apiService.fetchCategory(id)
+    const category = new Category(data)
+    main.innerHTML = category.renderCategory()
+    if (category.meals) {
+        category.meals.forEach(meal => {
+            main.innerHTML += `
+            <li><a href="#" data-id="${meal.id}" data-category-id="${category.id}">${meal.name}</a> </li>
+            <br>
+            `
+        })
+        bindClicksToMealsLinks()
+    }
+    document.getElementById('add-meal').addEventListener('click', displayMealForm)
+    clearForm()
+}
+
+
+
