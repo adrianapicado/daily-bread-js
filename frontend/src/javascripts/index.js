@@ -113,6 +113,15 @@ async function createMeal(e) {
     clearForm()
 }
 
+async function displayMeal(e) {
+    let id = e.target.dataset.id
+
+    const data = await apiService.fetchMeal(id)
+    const meal = new Meal(data)
+    main.innerHTML = meal.renderMeal()
+    document.getElementById('delete-meal').addEventListener('click', removeMeal) 
+}
+
 
 
 
