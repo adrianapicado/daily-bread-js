@@ -3,24 +3,16 @@ const apiService = new ApiService()
 let main = document.getElementById('main')
 
 const init = () => {
-    bindEventListeners()
+    bindingEventListeners()
     renderCategories() 
 }
 
-// window.addEventListener("DOMContentLoaded", () => {
-//     getCategories()
-// })
+function bindingEventListeners() {
+    document.getElementById('category-form').addEventListener('click', displayCreateForm)
+    document.getElementById('categories').addEventListener('click', renderCategories)
+}
 
-// function getCategories() {
-//     let main = document.getElementById('main')
-//     fetch(base_url + '/categories')
-//     .then(res => res.json())
-//     .then(categories => {
-//         console.log(categories)
-//     })
-// }
-
-function bindClicksToLinks() {
+function bindingClicksToLinks() {
     const categories = document.querySelectorAll("li a")
     categories.forEach(category => {
         category.addEventListener('click', displayCategory)
