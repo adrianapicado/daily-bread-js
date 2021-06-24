@@ -21,3 +21,17 @@ async function renderCategories() {
     })
     bindClicksToLinks()
 }
+
+function displayCreateForm() {
+    let formDiv = document.querySelector("#new-category-form")
+    let html = `
+        <form>
+            <label>Name:</label>
+            <input type="text" id="name">
+            <input type="submit">
+        </form>
+    `
+    formDiv.innerHTML = html
+    document.querySelector('form').addEventListener('submit', createCategory)    
+}
+
