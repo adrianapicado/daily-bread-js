@@ -41,5 +41,19 @@ class ApiService {
         return data
     }
 
+    async fetchCreateMeal(mealData) {
+        let configObj = {
+            method: 'POST',
+            body: JSON.stringify(mealData),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        let res = await fetch(this.base_url + '/meals', configObj)
+        let data = await res.json()
+        return data
+    }
+
 
 }
