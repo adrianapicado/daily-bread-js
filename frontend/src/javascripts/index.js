@@ -35,3 +35,17 @@ function displayCreateForm() {
     document.querySelector('form').addEventListener('submit', createCategory)    
 }
 
+async function createCategory(e) {
+    e.preventDefault()
+    let main = document.getElementById('main')
+    let category = {
+        name: e.target.querySelector("#name").value
+    }
+
+    let data = await apiService.fetchCreateCategory(category)
+    let newCategory = new Category(data)
+    main.innerHTML += newCategory.render()
+    bindClicksToLinks()
+    clearForm()
+}
+
