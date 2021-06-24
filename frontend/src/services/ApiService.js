@@ -55,5 +55,15 @@ class ApiService {
         return data
     }
 
+    async fetchRemoveMeal(id) {
+        let configObj = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        let res = await fetch(this.base_url + `/meals/${id}`, configObj)
+    }
 
 }
