@@ -127,6 +127,44 @@ function mealsInCategory() {
     
 }
 
+async function removeMeal(e) {
+    let categoryId = e.target.dataset.categoryId
+    let id = e.target.dataset.id
+    const data = await apiService.fetchRemoveMeal(id)
+    .then(data => {
+        displayCategory(categoryId)
+    })
+}
+
+function bindClicksToLinks() {
+    const categories = document.querySelectorAll("li a")
+    categories.forEach(category => {
+        category.addEventListener('click', (e) => displayCategory(e.target.dataset.id))
+    })
+}
+
+function bindClicksToMealsLinks() {
+    const meals = document.querySelectorAll("li a")
+    meals.forEach(meal => {
+        meal.addEventListener('click', displayMeal)
+    })
+}
+
+function bindClicksToCreateMeal() {
+    const meals = document.querySelectorAll("li a")
+    meals.forEach(meal => {
+        meal.addEventListener('click', displayMeal)
+    })
+}
+
+function clearForm() {
+    let formDiv = document.querySelector('#new-category-form')
+    formDiv.innerHTML = ""
+}
+
+init()
+
+
 
 
 
