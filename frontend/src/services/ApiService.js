@@ -35,5 +35,11 @@ class ApiService {
         return data
     }
 
+    async fetchMeal(id) {
+        let res = await fetch(this.base_url + `/meals/${id}`)
+        let data = await res.json()
+        return data
+    }
+
 
 }
