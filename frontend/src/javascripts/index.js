@@ -66,5 +66,55 @@ async function displayCategory(id){
     clearForm()
 }
 
+async function renderMeals() {  
+    const meals = await apiService.fetchMeals()
+    main.innerHTML = ""
+    meals.map(meal => {
+        const newMeal = new Meal(meal)
+        main.innerHTML += newMeal.render()
+    })
+}
+
+function displayMealForm(e) { 
+
+    let formDiv = document.querySelector("#add-meal-div") 
+    let html = `
+        <form>
+            <input type="hidden" id="categoryId" value="${e.target.dataset.id}">
+            <label>Name:</label>
+            <input type="text" id="name">
+            <label>Ingredients:</label>
+            <input type="text" id="ingredients">
+            <label>Calories:</label>
+            <input type="text" id="calories"></input>
+            <input type="submit">
+        </form>
+    `
+    formDiv.innerHTML = html
+    document.querySelector('form').addEventListener('submit', createMeal)    
+}
+
+async function createMeal(e) {
+    e.preventDefault()
+
+    const categoryId = document.querySelector("#add-meal").dataset.id
+    let main = document.getElementById('main')
+    let meal = {
+        category_id: categoryId, 
+        name: e.target.querySelector("#name").value,
+        ingredients: e.target.querySelector("#ingredients").value,
+        calories: e.target.querySelector("#calories").value,
+    }
+
+    let data = await apiService.fetchCreateMeal(meal)
+    let newMeal = new Meal(data)
+    main.innerHTML = newMeal.renderMeal() 
+    bindClicksToCreateMeal()
+    clearForm()
+}
+
+
+
+
 
 
